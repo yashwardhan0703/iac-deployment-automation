@@ -1,0 +1,11 @@
+services:
+
+  backend:
+    image: yws007/iac-deployment-automation:latest
+    ports:
+      - "5000:5000"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
