@@ -216,6 +216,24 @@ Health validation script verifying container status and backend availability.
 
 ---
 
+### CI/CD Pipeline – Build and Push Docker Image
+
+The GitHub Actions pipeline automatically builds the Docker image and pushes it to Docker Hub whenever code is pushed to the repository.
+
+![CI/CD Pipeline](screenshots/pipeline-build-and-push.png)
+
+---
+
+### Docker Image in Docker Hub
+
+The CI/CD pipeline pushes the built Docker image to Docker Hub, making it available for deployment.
+
+![Docker Hub Image](screenshots/dockerhub-image.png)
+
+---
+
+---
+
 ## Technologies Used
 
 * Linux (Ubuntu)
