@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+
+  backend:
+    image: node:18
+    container_name: backend_app
+    command: node -e "require('http').createServer((req,res)=>res.end('Backend running')).listen(5000)"
+    ports:
+      - "5000:5000"
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
