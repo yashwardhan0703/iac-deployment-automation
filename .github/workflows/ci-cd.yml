@@ -29,3 +29,26 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/iac-devops-demo:latest
+
+      # 🚨 Email Notification (ONLY on failure)
+      - name: Send Email on Failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "🚨 CI/CD Pipeline Failed - DevOps Demo"
+          body: |
+            ❌ Pipeline Failed!
+
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+
+            🔍 Check logs:
+            https://github.com/${{ github.repository }}/actions
+
+          to: your-email@example.com
+          from: github-actions@example.com
